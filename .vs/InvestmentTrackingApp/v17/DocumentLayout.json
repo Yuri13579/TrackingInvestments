@@ -3,28 +3,28 @@
   "WorkspaceRootPath": "C:\\projects\\TrackingInvestments\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{299DAC7D-2500-4E0F-ABDA-BC8C35661A05}|InvestmentTracking.Data\\InvestmentTracking.Data.csproj|c:\\projects\\trackinginvestments\\investmenttracking.data\\repositories\\interfaces\\icachingpurchaselotrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{299DAC7D-2500-4E0F-ABDA-BC8C35661A05}|InvestmentTracking.Data\\InvestmentTracking.Data.csproj|solutionrelative:investmenttracking.data\\repositories\\interfaces\\icachingpurchaselotrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{299DAC7D-2500-4E0F-ABDA-BC8C35661A05}|InvestmentTracking.Data\\InvestmentTracking.Data.csproj|c:\\projects\\trackinginvestments\\investmenttracking.data\\repositories\\cachingpurchaselotrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{299DAC7D-2500-4E0F-ABDA-BC8C35661A05}|InvestmentTracking.Data\\InvestmentTracking.Data.csproj|solutionrelative:investmenttracking.data\\repositories\\cachingpurchaselotrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{E85E6072-9D05-4284-8DF3-4E71B7DE74F5}|InvestmentTracking.Business\\InvestmentTracking.Business.csproj|c:\\projects\\trackinginvestments\\investmenttracking.business\\services\\investmentcalculator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E85E6072-9D05-4284-8DF3-4E71B7DE74F5}|InvestmentTracking.Business\\InvestmentTracking.Business.csproj|solutionrelative:investmenttracking.business\\services\\investmentcalculator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FD1CC1D8-5E88-4A59-AB18-4D8D985F9AF9}|InvestmentTrackingApp.Server\\InvestmentTrackingApp.Server.csproj|c:\\projects\\trackinginvestments\\investmenttrackingapp.server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FD1CC1D8-5E88-4A59-AB18-4D8D985F9AF9}|InvestmentTrackingApp.Server\\InvestmentTrackingApp.Server.csproj|solutionrelative:investmenttrackingapp.server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{299DAC7D-2500-4E0F-ABDA-BC8C35661A05}|InvestmentTracking.Data\\InvestmentTracking.Data.csproj|c:\\projects\\trackinginvestments\\investmenttracking.data\\repositories\\purchaselotrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{299DAC7D-2500-4E0F-ABDA-BC8C35661A05}|InvestmentTracking.Data\\InvestmentTracking.Data.csproj|solutionrelative:investmenttracking.data\\repositories\\purchaselotrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E85E6072-9D05-4284-8DF3-4E71B7DE74F5}|InvestmentTracking.Business\\InvestmentTracking.Business.csproj|c:\\projects\\trackinginvestments\\investmenttracking.business\\services\\interfaces\\iinvestmentcalculator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E85E6072-9D05-4284-8DF3-4E71B7DE74F5}|InvestmentTracking.Business\\InvestmentTracking.Business.csproj|solutionrelative:investmenttracking.business\\services\\interfaces\\iinvestmentcalculator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{FD1CC1D8-5E88-4A59-AB18-4D8D985F9AF9}|InvestmentTrackingApp.Server\\InvestmentTrackingApp.Server.csproj|c:\\projects\\trackinginvestments\\investmenttrackingapp.server\\controllers\\investmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FD1CC1D8-5E88-4A59-AB18-4D8D985F9AF9}|InvestmentTrackingApp.Server\\InvestmentTrackingApp.Server.csproj|solutionrelative:investmenttrackingapp.server\\controllers\\investmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{FD1CC1D8-5E88-4A59-AB18-4D8D985F9AF9}|InvestmentTrackingApp.Server\\InvestmentTrackingApp.Server.csproj|c:\\projects\\trackinginvestments\\investmenttrackingapp.server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FD1CC1D8-5E88-4A59-AB18-4D8D985F9AF9}|InvestmentTrackingApp.Server\\InvestmentTrackingApp.Server.csproj|solutionrelative:investmenttrackingapp.server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{299DAC7D-2500-4E0F-ABDA-BC8C35661A05}|InvestmentTracking.Data\\InvestmentTracking.Data.csproj|c:\\projects\\trackinginvestments\\investmenttracking.data\\repositories\\interfaces\\ipurchaselotrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{299DAC7D-2500-4E0F-ABDA-BC8C35661A05}|InvestmentTracking.Data\\InvestmentTracking.Data.csproj|solutionrelative:investmenttracking.data\\repositories\\interfaces\\ipurchaselotrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{FD1CC1D8-5E88-4A59-AB18-4D8D985F9AF9}|InvestmentTrackingApp.Server\\InvestmentTrackingApp.Server.csproj|c:\\projects\\trackinginvestments\\investmenttrackingapp.server\\controllers\\investmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FD1CC1D8-5E88-4A59-AB18-4D8D985F9AF9}|InvestmentTrackingApp.Server\\InvestmentTrackingApp.Server.csproj|solutionrelative:investmenttrackingapp.server\\controllers\\investmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{299DAC7D-2500-4E0F-ABDA-BC8C35661A05}|InvestmentTracking.Data\\InvestmentTracking.Data.csproj|c:\\projects\\trackinginvestments\\investmenttracking.data\\model\\purchaselot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -41,7 +41,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -61,6 +61,19 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ICachingPurchaseLotRepository.cs",
+              "DocumentMoniker": "C:\\projects\\TrackingInvestments\\InvestmentTracking.Data\\Repositories\\Interfaces\\ICachingPurchaseLotRepository.cs",
+              "RelativeDocumentMoniker": "InvestmentTracking.Data\\Repositories\\Interfaces\\ICachingPurchaseLotRepository.cs",
+              "ToolTip": "C:\\projects\\TrackingInvestments\\InvestmentTracking.Data\\Repositories\\Interfaces\\ICachingPurchaseLotRepository.cs",
+              "RelativeToolTip": "InvestmentTracking.Data\\Repositories\\Interfaces\\ICachingPurchaseLotRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-26T16:57:04.576Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 3,
               "Title": "IInvestmentCalculator.cs",
               "DocumentMoniker": "C:\\projects\\TrackingInvestments\\InvestmentTracking.Business\\Services\\Interfaces\\IInvestmentCalculator.cs",
@@ -74,67 +87,54 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "IPurchaseLotRepository.cs",
-              "DocumentMoniker": "C:\\projects\\TrackingInvestments\\InvestmentTracking.Data\\Repositories\\Interfaces\\IPurchaseLotRepository.cs",
-              "RelativeDocumentMoniker": "InvestmentTracking.Data\\Repositories\\Interfaces\\IPurchaseLotRepository.cs",
-              "ToolTip": "C:\\projects\\TrackingInvestments\\InvestmentTracking.Data\\Repositories\\Interfaces\\IPurchaseLotRepository.cs",
-              "RelativeToolTip": "InvestmentTracking.Data\\Repositories\\Interfaces\\IPurchaseLotRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-26T14:48:33.997Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\projects\\TrackingInvestments\\InvestmentTrackingApp.Server\\Program.cs",
               "RelativeDocumentMoniker": "InvestmentTrackingApp.Server\\Program.cs",
-              "ToolTip": "C:\\projects\\TrackingInvestments\\InvestmentTrackingApp.Server\\Program.cs*",
-              "RelativeToolTip": "InvestmentTrackingApp.Server\\Program.cs*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAABJAAAAAAAAAA==",
+              "ToolTip": "C:\\projects\\TrackingInvestments\\InvestmentTrackingApp.Server\\Program.cs",
+              "RelativeToolTip": "InvestmentTrackingApp.Server\\Program.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAUwCoAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-26T14:42:18.764Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "InvestmentController.cs",
               "DocumentMoniker": "C:\\projects\\TrackingInvestments\\InvestmentTrackingApp.Server\\Controllers\\InvestmentController.cs",
               "RelativeDocumentMoniker": "InvestmentTrackingApp.Server\\Controllers\\InvestmentController.cs",
               "ToolTip": "C:\\projects\\TrackingInvestments\\InvestmentTrackingApp.Server\\Controllers\\InvestmentController.cs",
               "RelativeToolTip": "InvestmentTrackingApp.Server\\Controllers\\InvestmentController.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAcAAAA3AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-26T14:32:49.384Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "InvestmentCalculator.cs",
               "DocumentMoniker": "C:\\projects\\TrackingInvestments\\InvestmentTracking.Business\\Services\\InvestmentCalculator.cs",
               "RelativeDocumentMoniker": "InvestmentTracking.Business\\Services\\InvestmentCalculator.cs",
-              "ToolTip": "C:\\projects\\TrackingInvestments\\InvestmentTracking.Business\\Services\\InvestmentCalculator.cs*",
-              "RelativeToolTip": "InvestmentTracking.Business\\Services\\InvestmentCalculator.cs*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAsAAAAAAAAAAAAAAA==",
+              "ToolTip": "C:\\projects\\TrackingInvestments\\InvestmentTracking.Business\\Services\\InvestmentCalculator.cs",
+              "RelativeToolTip": "InvestmentTracking.Business\\Services\\InvestmentCalculator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-26T14:31:25.021Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "PurchaseLotRepository.cs",
-              "DocumentMoniker": "C:\\projects\\TrackingInvestments\\InvestmentTracking.Data\\Repositories\\PurchaseLotRepository.cs",
-              "RelativeDocumentMoniker": "InvestmentTracking.Data\\Repositories\\PurchaseLotRepository.cs",
-              "ToolTip": "C:\\projects\\TrackingInvestments\\InvestmentTracking.Data\\Repositories\\PurchaseLotRepository.cs",
-              "RelativeToolTip": "InvestmentTracking.Data\\Repositories\\PurchaseLotRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAARAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "CachingPurchaseLotRepository.cs",
+              "DocumentMoniker": "C:\\projects\\TrackingInvestments\\InvestmentTracking.Data\\Repositories\\CachingPurchaseLotRepository.cs",
+              "RelativeDocumentMoniker": "InvestmentTracking.Data\\Repositories\\CachingPurchaseLotRepository.cs",
+              "ToolTip": "C:\\projects\\TrackingInvestments\\InvestmentTracking.Data\\Repositories\\CachingPurchaseLotRepository.cs",
+              "RelativeToolTip": "InvestmentTracking.Data\\Repositories\\CachingPurchaseLotRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-26T14:30:10.408Z",
+              "WhenOpened": "2024-08-26T16:28:19.172Z",
               "EditorCaption": ""
             },
             {

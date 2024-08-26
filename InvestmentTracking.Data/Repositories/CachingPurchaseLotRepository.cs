@@ -6,32 +6,25 @@ namespace InvestmentTracking.Data.Repositories
 {
     public class CachingPurchaseLotRepository : ICachingPurchaseLotRepository
     {
-        private readonly IPurchaseLotRepository _repository;
         private readonly IMemoryCache _cache;
-
         private static readonly string CacheKey = "PurchaseLots";
 
-        public CachingPurchaseLotRepository(IPurchaseLotRepository repository, IMemoryCache cache)
+        public CachingPurchaseLotRepository(IMemoryCache cache)
         {
-            _repository = repository;
             _cache = cache;
         }
 
         public List<PurchaseLot> GetPurchaseLots()
         {
-            if (!_cache.TryGetValue(CacheKey, out List<PurchaseLot> purchaseLots))
+            // Retrieve the cached value directly
+            if (_cache.TryGetValue(CacheKey, out List<PurchaseLot> purchaseLots))
             {
-                // Cache data not available, fetch from repository
-                purchaseLots = _repository.GetPurchaseLots();
-
-                // Set cache options
-                var cacheEntryOptions = new MemoryCacheEntryOptions();
-
-                // Cache the data
-                _cache.Set(CacheKey, purchaseLots, cacheEntryOptions);
+                // Return the collection ordered by PricePerShare
+                return purchaseLots.OrderBy(lot => lot.PricePerShare).ToList();
             }
 
-            return purchaseLots;
+            // Return an empty list or handle the case when data is not in the cache
+            return new List<PurchaseLot>();
         }
 
         public PurchaseLot GetPurchaseLotById(int id)

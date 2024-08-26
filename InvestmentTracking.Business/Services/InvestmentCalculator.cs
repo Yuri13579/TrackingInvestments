@@ -1,6 +1,5 @@
 ﻿using InvestmentTracking.Business.Services.Interfaces;
 using InvestmentTracking.Data.Model;
-using InvestmentTracking.Data.Repositories;
 using InvestmentTracking.Data.Repositories.Interfaces;
 
 namespace InvestmentTracking.Business.Services
@@ -8,14 +7,13 @@ namespace InvestmentTracking.Business.Services
     public class InvestmentCalculator : IInvestmentCalculator
     {
         private readonly ICachingPurchaseLotRepository _cachingPurchaseLotRepository;
-        private readonly List<PurchaseLot> _purchaseLots;
+        private readonly IEnumerable<PurchaseLot> _purchaseLots;
 
         public InvestmentCalculator(ICachingPurchaseLotRepository cachingPurchaseLotRepository)
         {
             _cachingPurchaseLotRepository = cachingPurchaseLotRepository;
-            _purchaseLots = _cachingPurchaseLotRepository.GetPurchaseLots()
-                                                  .OrderBy(lot => lot.PricePerShare)
-                                                  .ToList();
+            // Fetch the purchase lots from the cache during initialization (already ordered)
+            _purchaseLots = _cachingPurchaseLotRepository.GetPurchaseLots();
         }
 
         public int CalculateRemainingShares(int sharesSold)
@@ -47,7 +45,6 @@ namespace InvestmentTracking.Business.Services
             var averageCostBasis = totalCost / sharesSold;
             return decimal.Round(averageCostBasis, 2);
         }
-
         public decimal CalculateCostBasisOfRemainingShares(int sharesSold)
         {
             int sharesToSell = sharesSold;
