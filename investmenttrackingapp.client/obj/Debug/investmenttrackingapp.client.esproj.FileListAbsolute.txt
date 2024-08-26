@@ -1,0 +1,1 @@
+C:\projects\TrackingInvestments\investmenttrackingapp.client\obj\Debug\investmenttrackingapp.client.esproj.CoreCompileInputs.cache
