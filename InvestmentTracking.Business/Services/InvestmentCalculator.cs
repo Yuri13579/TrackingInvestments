@@ -1,7 +1,6 @@
 ﻿using InvestmentTracking.Business.Services.Interfaces;
 using InvestmentTracking.Data.Model;
 using InvestmentTracking.Data.Repositories.Interfaces;
-using System.Collections.Generic;
 
 namespace InvestmentTracking.Business.Services
 {
