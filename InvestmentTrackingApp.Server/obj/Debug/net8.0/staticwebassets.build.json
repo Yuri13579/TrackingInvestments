@@ -1,0 +1,23 @@
+{
+  "Version": 1,
+  "Hash": "7T4qRKCqJQbYmBy0O51S0sArG4t4J5nuKn4r7zZUqPg=",
+  "Source": "InvestmentTrackingApp.Server",
+  "BasePath": "_content/InvestmentTrackingApp.Server",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [
+    {
+      "Identity": "C:\\projects\\TrackingInvestments\\investmenttrackingapp.client\\investmenttrackingapp.client.esproj",
+      "Version": 2,
+      "Source": "investmenttrackingapp.client",
+      "GetPublishAssetsTargets": "GetCurrentProjectPublishStaticWebAssetItems",
+      "AdditionalPublishProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier;SelfContained",
+      "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
+      "AdditionalBuildProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier;SelfContained"
+    }
+  ],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\InvestmentTracking.Business\InvestmentTracking.Business.csproj" />
     <ProjectReference Include="..\investmenttrackingapp.client\investmenttrackingapp.client.esproj">
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>

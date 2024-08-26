@@ -1,0 +1,39 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "InvestmentTracking.Business/1.0.0": {
+        "dependencies": {
+          "InvestmentTracking.Data": "1.0.0"
+        },
+        "runtime": {
+          "InvestmentTracking.Business.dll": {}
+        }
+      },
+      "InvestmentTracking.Data/1.0.0": {
+        "runtime": {
+          "InvestmentTracking.Data.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "InvestmentTracking.Business/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "InvestmentTracking.Data/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
