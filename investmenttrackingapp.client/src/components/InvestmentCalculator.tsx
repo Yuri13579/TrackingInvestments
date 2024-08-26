@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { getRemainingShares, getCostBasisOfSoldShares, getCostBasisOfRemainingShares, getProfit } from '../services/investmentService';
+import { getRemainingShares, getCostBasisOfSoldShares, getCostBasisOfRemainingShares, getProfit } from '../services/InvestmentService';
 import './InvestmentCalculator.css';
 
 const InvestmentCalculator: React.FC = () => {
@@ -9,8 +9,22 @@ const InvestmentCalculator: React.FC = () => {
     const [costBasisSold, setCostBasisSold] = useState<number | null>(null);
     const [costBasisRemaining, setCostBasisRemaining] = useState<number | null>(null);
     const [profit, setProfit] = useState<number | null>(null);
+    const [error, setError] = useState<string | null>(null);
 
     const handleCalculate = async () => {
+        // Reset any previous error messages
+        setError(null);
+
+        // Validation: Ensure sharesSold and salePrice are greater than 0
+        if (sharesSold <= 0) {
+            setError("The number of shares sold must be greater than 0.");
+            return;
+        }
+        if (salePrice <= 0) {
+            setError("The sale price per share must be greater than 0.");
+            return;
+        }
+
         try {
             const remainingSharesData = await getRemainingShares(sharesSold);
             const costBasisSoldData = await getCostBasisOfSoldShares(sharesSold);
@@ -23,6 +37,7 @@ const InvestmentCalculator: React.FC = () => {
             setProfit(profitData.profit);
         } catch (error) {
             console.error('Error calculating results:', error);
+            setError("An error occurred while calculating the results. Please try again.");
         }
     };
 
@@ -48,6 +63,8 @@ const InvestmentCalculator: React.FC = () => {
                 />
             </div>
             <button onClick={handleCalculate}>Calculate</button>
+
+            {error && <div className="error-message">{error}</div>}
 
             {remainingShares !== null && (
                 <div className="results">

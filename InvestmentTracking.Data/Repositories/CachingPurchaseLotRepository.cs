@@ -20,7 +20,7 @@ namespace InvestmentTracking.Data.Repositories
             if (_cache.TryGetValue(CacheKey, out List<PurchaseLot> purchaseLots))
             {
                 // Return the collection ordered by PricePerShare
-                return purchaseLots.OrderBy(lot => lot.PurchaseDate).ToList();
+                return purchaseLots.ToList();
             }
 
             // Return an empty list or handle the case when data is not in the cache

@@ -26,7 +26,7 @@ namespace InvestmentTracking.Business.Services
         {
             if (sharesSold <= 0) return 0m;
 
-            List<PurchaseLot> currentPurchaseLots = _purchaseLots.ToList();
+            List<PurchaseLot> currentPurchaseLots = _purchaseLots.ToList().OrderBy(x => x.PurchaseDate).ToList();;
 
             return CalculateCostOfShares(sharesSold, currentPurchaseLots);
         }
