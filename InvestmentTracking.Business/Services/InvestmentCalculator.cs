@@ -1,6 +1,8 @@
-﻿using InvestmentTracking.Business.Services.Interfaces;
+﻿using BusinessData;
+using InvestmentTracking.Business.Services.Interfaces;
 using InvestmentTracking.Data.Model;
 using InvestmentTracking.Data.Repositories.Interfaces;
+using static BusinessData.AccountingStrategy;
 
 namespace InvestmentTracking.Business.Services
 {
@@ -17,58 +19,30 @@ namespace InvestmentTracking.Business.Services
 
         public decimal CalculateCostBasisOfSoldShares(int sharesSold)
         {
-            if (sharesSold <= 0) return 0m;
-
-            List<PurchaseLot> currentPurchaseLots = _cachingPurchaseLotRepository.GetPurchaseLots().OrderBy(x => x.PurchaseDate).ToList();;
-
-            return CalculateCostOfShares(sharesSold, currentPurchaseLots);
+            var strategy = new FifoStrategy();
+            return strategy.CalculateCostBasisOfSoldShares(_cachingPurchaseLotRepository.GetPurchaseLots().ToList(), sharesSold);
+            
         }
 
         public decimal CalculateCostBasisOfRemainingShares(int sharesSold)
         {
-            if (sharesSold <= 0) return 0m;
-
-            List<PurchaseLot> currentPurchaseLots = _cachingPurchaseLotRepository.GetPurchaseLots().OrderByDescending(x => x.PurchaseDate).ToList();
-
-            return CalculateCostOfShares(sharesSold, currentPurchaseLots);
+            var strategy = new FifoStrategy();
+            return strategy.CalculateCostBasisOfRemainingShares(_cachingPurchaseLotRepository.GetPurchaseLots().ToList(), sharesSold);
         }
 
         public decimal CalculateProfit(int sharesSold, decimal salePrice)
         {
             if (sharesSold <= 0 || salePrice <= 0) return 0m;
+            var strategy = new FifoStrategy();
+            decimal costBasis = strategy.CalculateCostBasisOfSoldShares (_cachingPurchaseLotRepository.GetPurchaseLots().ToList(), sharesSold);
 
-            decimal costBasis = CalculateCostBasisOfSoldShares(sharesSold);
+            //decimal costBasis = CalculateCostBasisOfSoldShares(sharesSold);
             decimal profit = (salePrice * sharesSold) - costBasis;
             return decimal.Round(profit, 2);
         }
-        private decimal CalculateCostOfShares(int sharesSold, List<PurchaseLot> currentPurchaseLots)
-        {
-            int totalShares = 0;
 
-            currentPurchaseLots.ForEach(x => totalShares += x.Shares);
+       
 
-            if (sharesSold <= 0 || totalShares < sharesSold)
-                throw new InvalidOperationException("Not enough shares to sell.");
-
-            int shareSoldCurrent = sharesSold;
-            decimal costBasisOfSoldShares = 0;
-            foreach (var lot in currentPurchaseLots)
-            {
-                if (shareSoldCurrent - lot.Shares > 0)
-                {
-                    shareSoldCurrent -= lot.Shares;
-                    costBasisOfSoldShares = lot.Shares * lot.PricePerShare;
-                    continue;
-                }
-                else
-                {
-                    costBasisOfSoldShares += shareSoldCurrent * lot.PricePerShare;
-                    break;
-                }
-
-            }
-            return decimal.Round(costBasisOfSoldShares);
-        }
 
     }
 }

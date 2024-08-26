@@ -10,4 +10,8 @@
     <PackageReference Include="Ardalis.SmartEnum" Version="8.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\InvestmentTracking.Data\InvestmentTracking.Data.csproj" />
+  </ItemGroup>
+
 </Project>
