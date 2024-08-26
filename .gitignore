@@ -1,3 +1,10 @@
 ﻿*.bin
 *.vsidx
 *.suo
+*.v2
+InvestmentTracking.Business/bin/Debug
+InvestmentTracking.Business/obj/Debug
+InvestmentTracking.Data/bin/Debug
+InvestmentTracking.Data/obj/Debug
+InvestmentTrackingApp.Server/bin/Debug
+InvestmentTrackingApp.Server/obj/Debug

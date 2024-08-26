@@ -5,74 +5,82 @@ using InvestmentTracking.Data.Repositories.Interfaces;
 
 namespace InvestmentTracking.Business.Services
 {
-    public class InvestmentCalculator() : IInvestmentCalculator
+    public class InvestmentCalculator : IInvestmentCalculator
     {
-        private readonly IPurchaseLotRepository _repository;
+        private readonly ICachingPurchaseLotRepository _cachingPurchaseLotRepository;
         private readonly List<PurchaseLot> _purchaseLots;
 
-        public InvestmentCalculator(IPurchaseLotRepository repository) : this()
+        public InvestmentCalculator(ICachingPurchaseLotRepository cachingPurchaseLotRepository)
         {
-            _repository = repository;
-            _purchaseLots = _repository.GetPurchaseLots();
+            _cachingPurchaseLotRepository = cachingPurchaseLotRepository;
+            _purchaseLots = _cachingPurchaseLotRepository.GetPurchaseLots()
+                                                  .OrderBy(lot => lot.PricePerShare)
+                                                  .ToList();
         }
 
         public int CalculateRemainingShares(int sharesSold)
         {
-            int totalShares = 0;
-            foreach (var lot in _purchaseLots)
-            {
-                totalShares += lot.Shares;
-            }
-
-            return totalShares - sharesSold;
+            var totalShares = _purchaseLots.Sum(lot => lot.Shares);
+            var remainingShares = totalShares - sharesSold;
+            return remainingShares >= 0 ? remainingShares : 0;
         }
 
         public decimal CalculateCostBasisOfSoldShares(int sharesSold)
         {
-            int remainingSharesToSell = sharesSold;
-            decimal totalCost = 0;
+            if (sharesSold <= 0) return 0m;
+
+            int sharesToSell = sharesSold;
+            decimal totalCost = 0m;
 
             foreach (var lot in _purchaseLots)
             {
-                if (remainingSharesToSell <= 0) break;
+                if (sharesToSell == 0) break;
 
-                int sharesToSellFromLot = Math.Min(remainingSharesToSell, lot.Shares);
-                totalCost += sharesToSellFromLot * lot.PricePerShare;
-                remainingSharesToSell -= sharesToSellFromLot;
+                int sharesFromLot = Math.Min(sharesToSell, lot.Shares);
+                totalCost += sharesFromLot * lot.PricePerShare;
+                sharesToSell -= sharesFromLot;
             }
 
-            return totalCost / sharesSold;
+            if (sharesToSell > 0)
+                throw new InvalidOperationException("Not enough shares to sell.");
+
+            var averageCostBasis = totalCost / sharesSold;
+            return decimal.Round(averageCostBasis, 2);
         }
 
         public decimal CalculateCostBasisOfRemainingShares(int sharesSold)
         {
-            int remainingSharesToSell = sharesSold;
-            decimal totalCost = 0;
+            int sharesToSell = sharesSold;
+            decimal totalCost = 0m;
             int totalRemainingShares = 0;
 
             foreach (var lot in _purchaseLots)
             {
-                if (remainingSharesToSell > 0)
+                if (sharesToSell >= lot.Shares)
                 {
-                    int sharesToSellFromLot = Math.Min(remainingSharesToSell, lot.Shares);
-                    remainingSharesToSell -= sharesToSellFromLot;
+                    sharesToSell -= lot.Shares;
+                    continue;
                 }
 
-                if (remainingSharesToSell <= 0)
-                {
-                    int sharesRemainingInLot = lot.Shares - (sharesSold - remainingSharesToSell);
-                    totalCost += sharesRemainingInLot * lot.PricePerShare;
-                    totalRemainingShares += sharesRemainingInLot;
-                }
+                int sharesRemainingInLot = lot.Shares - sharesToSell;
+                totalCost += sharesRemainingInLot * lot.PricePerShare;
+                totalRemainingShares += sharesRemainingInLot;
+                sharesToSell = 0;
             }
 
-            return totalRemainingShares > 0 ? totalCost / totalRemainingShares : 0;
+            if (totalRemainingShares == 0) return 0m;
+
+            var averageCostBasis = totalCost / totalRemainingShares;
+            return decimal.Round(averageCostBasis, 2);
         }
 
         public decimal CalculateProfit(int sharesSold, decimal salePrice)
         {
-            decimal costBasis = CalculateCostBasisOfSoldShares(sharesSold);
-            return sharesSold * (salePrice - costBasis);
+            if (sharesSold <= 0 || salePrice <= 0) return 0m;
+
+            var costBasis = CalculateCostBasisOfSoldShares(sharesSold);
+            var profit = (salePrice - costBasis) * sharesSold;
+            return decimal.Round(profit, 2);
         }
     }
 }

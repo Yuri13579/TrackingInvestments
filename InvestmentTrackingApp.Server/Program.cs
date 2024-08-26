@@ -12,8 +12,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IPurchaseLotRepository,PurchaseLotRepository>();
+builder.Services.AddSingleton<ICachingPurchaseLotRepository, CachingPurchaseLotRepository>();
 builder.Services.AddTransient<IInvestmentCalculator, InvestmentCalculator>();
 //builder.Services.AddScoped<IInvestmentCalculator, InvestmentCalculator>();
+
+builder.Services.AddMemoryCache();
 
 var app = builder.Build();
 

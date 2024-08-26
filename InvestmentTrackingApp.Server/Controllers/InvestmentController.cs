@@ -3,35 +3,70 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace InvestmentTrackingApp.Server.Controllers;
 
-[ApiController]
-[Route("api/[controller]")]
-public class InvestmentController(IInvestmentCalculator calculator) : ControllerBase
-{
-    [HttpGet("remaining-shares")]
-    public IActionResult GetRemainingShares(int sharesSold)
+    [ApiController]
+    [Route("api/[controller]")]
+    public class InvestmentController : ControllerBase
     {
-        var remainingShares = calculator.CalculateRemainingShares(sharesSold);
-        return Ok(remainingShares);
-    }
+        private readonly IInvestmentCalculator _investmentCalculator;
 
-    [HttpGet("cost-basis-sold")]
-    public IActionResult GetCostBasisOfSoldShares(int sharesSold)
-    {
-        var costBasis = calculator.CalculateCostBasisOfSoldShares(sharesSold);
-        return Ok(costBasis);
-    }
+        public InvestmentController(IInvestmentCalculator investmentCalculator)
+        {
+            _investmentCalculator = investmentCalculator;
+        }
 
-    [HttpGet("cost-basis-remaining")]
-    public IActionResult GetCostBasisOfRemainingShares(int sharesSold)
-    {
-        var costBasis = calculator.CalculateCostBasisOfRemainingShares(sharesSold);
-        return Ok(costBasis);
-    }
+        [HttpGet("remaining-shares")]
+        public IActionResult GetRemainingShares(int sharesSold)
+        {
+            try
+            {
+                var remainingShares = _investmentCalculator.CalculateRemainingShares(sharesSold);
+                return Ok(new { RemainingShares = remainingShares });
+            }
+            catch (System.Exception ex)
+            {
+                return BadRequest(new { Message = ex.Message });
+            }
+        }
 
-    [HttpGet("profit")]
-    public IActionResult GetProfit(int sharesSold, decimal salePrice)
-    {
-        var profit = calculator.CalculateProfit(sharesSold, salePrice);
-        return Ok(profit);
+        [HttpGet("cost-basis-sold")]
+        public IActionResult GetCostBasisOfSoldShares(int sharesSold)
+        {
+            try
+            {
+                var costBasis = _investmentCalculator.CalculateCostBasisOfSoldShares(sharesSold);
+                return Ok(new { CostBasisOfSoldShares = costBasis });
+            }
+            catch (System.Exception ex)
+            {
+                return BadRequest(new { Message = ex.Message });
+            }
+        }
+
+        [HttpGet("cost-basis-remaining")]
+        public IActionResult GetCostBasisOfRemainingShares(int sharesSold)
+        {
+            try
+            {
+                var costBasis = _investmentCalculator.CalculateCostBasisOfRemainingShares(sharesSold);
+                return Ok(new { CostBasisOfRemainingShares = costBasis });
+            }
+            catch (System.Exception ex)
+            {
+                return BadRequest(new { Message = ex.Message });
+            }
+        }
+
+        [HttpGet("profit")]
+        public IActionResult GetProfit(int sharesSold, decimal salePrice)
+        {
+            try
+            {
+                var profit = _investmentCalculator.CalculateProfit(sharesSold, salePrice);
+                return Ok(new { Profit = profit });
+            }
+            catch (System.Exception ex)
+            {
+                return BadRequest(new { Message = ex.Message });
+            }
+        }
     }
-}
