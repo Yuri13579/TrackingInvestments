@@ -40,9 +40,5 @@ namespace InvestmentTracking.Business.Services
             decimal profit = (salePrice * sharesSold) - costBasis;
             return decimal.Round(profit, 2);
         }
-
-       
-
-
     }
 }
