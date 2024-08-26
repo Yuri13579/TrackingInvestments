@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { getRemainingShares, getCostBasisOfSoldShares, getCostBasisOfRemainingShares, getProfit } from '../services/InvestmentService';
+import { getRemainingShares, getCostBasisOfSoldShares, getCostBasisOfRemainingShares, getProfit } from '../services/investmentService';
+import './InvestmentCalculator.css';
 
 const InvestmentCalculator: React.FC = () => {
     const [sharesSold, setSharesSold] = useState<number>(0);
@@ -26,19 +27,21 @@ const InvestmentCalculator: React.FC = () => {
     };
 
     return (
-        <div>
+        <div className="investment-calculator">
             <h1>Investment Calculator</h1>
             <div>
-                <label>Shares Sold:</label>
+                <label htmlFor="sharesSold">Shares Sold:</label>
                 <input
+                    id="sharesSold"
                     type="number"
                     value={sharesSold}
                     onChange={(e) => setSharesSold(Number(e.target.value))}
                 />
             </div>
             <div>
-                <label>Sale Price per Share:</label>
+                <label htmlFor="salePrice">Sale Price per Share:</label>
                 <input
+                    id="salePrice"
                     type="number"
                     value={salePrice}
                     onChange={(e) => setSalePrice(Number(e.target.value))}
@@ -47,7 +50,7 @@ const InvestmentCalculator: React.FC = () => {
             <button onClick={handleCalculate}>Calculate</button>
 
             {remainingShares !== null && (
-                <div>
+                <div className="results">
                     <h2>Results:</h2>
                     <p>Remaining Shares: {remainingShares}</p>
                     <p>Cost Basis of Sold Shares: ${costBasisSold?.toFixed(2)}</p>
