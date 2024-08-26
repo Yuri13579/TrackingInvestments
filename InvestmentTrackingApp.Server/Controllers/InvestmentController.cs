@@ -55,7 +55,7 @@ namespace InvestmentTrackingApp.Server.Controllers;
                 return BadRequest(new { Message = ex.Message });
             }
         }
-
+        
         [HttpGet("profit")]
         public IActionResult GetProfit(int sharesSold, decimal salePrice)
         {

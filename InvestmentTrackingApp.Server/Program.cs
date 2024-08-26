@@ -30,9 +30,9 @@ using (var scope = app.Services.CreateScope())
     // Preload cache with PurchaseLots data
     var purchaseLots = new List<PurchaseLot>
     {
-        new PurchaseLot(100, 20m),
-        new PurchaseLot(150, 30m),
-        new PurchaseLot(120, 10m)
+        new PurchaseLot(100, 20m, new DateTime(2024, 1, 1)), 
+        new PurchaseLot(150, 30m, new DateTime(2024, 2, 1)), 
+        new PurchaseLot(120, 10m, new DateTime(2024, 3, 1)) 
     };
 
     var cacheEntryOptions = new MemoryCacheEntryOptions()

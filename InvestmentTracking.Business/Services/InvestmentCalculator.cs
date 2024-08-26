@@ -1,6 +1,7 @@
 ﻿using InvestmentTracking.Business.Services.Interfaces;
 using InvestmentTracking.Data.Model;
 using InvestmentTracking.Data.Repositories.Interfaces;
+using System.Collections.Generic;
 
 namespace InvestmentTracking.Business.Services
 {
@@ -12,7 +13,6 @@ namespace InvestmentTracking.Business.Services
         public InvestmentCalculator(ICachingPurchaseLotRepository cachingPurchaseLotRepository)
         {
             _cachingPurchaseLotRepository = cachingPurchaseLotRepository;
-            // Fetch the purchase lots from the cache during initialization (already ordered)
             _purchaseLots = _cachingPurchaseLotRepository.GetPurchaseLots();
         }
 
@@ -27,57 +27,56 @@ namespace InvestmentTracking.Business.Services
         {
             if (sharesSold <= 0) return 0m;
 
-            int sharesToSell = sharesSold;
-            decimal totalCost = 0m;
+            List<PurchaseLot> currentPurchaseLots = _purchaseLots.ToList();
 
-            foreach (var lot in _purchaseLots)
-            {
-                if (sharesToSell == 0) break;
-
-                int sharesFromLot = Math.Min(sharesToSell, lot.Shares);
-                totalCost += sharesFromLot * lot.PricePerShare;
-                sharesToSell -= sharesFromLot;
-            }
-
-            if (sharesToSell > 0)
-                throw new InvalidOperationException("Not enough shares to sell.");
-
-            var averageCostBasis = totalCost / sharesSold;
-            return decimal.Round(averageCostBasis, 2);
+            return CalculateCostOfShares(sharesSold, currentPurchaseLots);
         }
+
         public decimal CalculateCostBasisOfRemainingShares(int sharesSold)
         {
-            int sharesToSell = sharesSold;
-            decimal totalCost = 0m;
-            int totalRemainingShares = 0;
+            if (sharesSold <= 0) return 0m;
 
-            foreach (var lot in _purchaseLots)
-            {
-                if (sharesToSell >= lot.Shares)
-                {
-                    sharesToSell -= lot.Shares;
-                    continue;
-                }
+            List<PurchaseLot> currentPurchaseLots = _purchaseLots.ToList().OrderByDescending(x => x.PurchaseDate).ToList();
 
-                int sharesRemainingInLot = lot.Shares - sharesToSell;
-                totalCost += sharesRemainingInLot * lot.PricePerShare;
-                totalRemainingShares += sharesRemainingInLot;
-                sharesToSell = 0;
-            }
-
-            if (totalRemainingShares == 0) return 0m;
-
-            var averageCostBasis = totalCost / totalRemainingShares;
-            return decimal.Round(averageCostBasis, 2);
+            return CalculateCostOfShares(sharesSold, currentPurchaseLots);
         }
 
         public decimal CalculateProfit(int sharesSold, decimal salePrice)
         {
             if (sharesSold <= 0 || salePrice <= 0) return 0m;
 
-            var costBasis = CalculateCostBasisOfSoldShares(sharesSold);
-            var profit = (salePrice - costBasis) * sharesSold;
+            decimal costBasis = CalculateCostBasisOfSoldShares(sharesSold);
+            decimal profit = (salePrice * sharesSold) - costBasis;
             return decimal.Round(profit, 2);
         }
+        private decimal CalculateCostOfShares(int sharesSold, List<PurchaseLot> currentPurchaseLots)
+        {
+            int totalShares = 0;
+
+            currentPurchaseLots.ForEach(x => totalShares += x.Shares);
+
+            if (sharesSold <= 0 || totalShares < sharesSold)
+                throw new InvalidOperationException("Not enough shares to sell.");
+
+            int shareSoldCurrent = sharesSold;
+            decimal costBasisOfSoldShares = 0;
+            foreach (var lot in _purchaseLots)
+            {
+                if (shareSoldCurrent - lot.Shares > 0)
+                {
+                    shareSoldCurrent -= lot.Shares;
+                    costBasisOfSoldShares = lot.Shares * lot.PricePerShare;
+                    continue;
+                }
+                else
+                {
+                    costBasisOfSoldShares += shareSoldCurrent * lot.PricePerShare;
+                    break;
+                }
+
+            }
+            return decimal.Round(costBasisOfSoldShares);
+        }
+
     }
 }
