@@ -4,20 +4,13 @@ using InvestmentTracking.Data.Repositories.Interfaces;
 
 namespace InvestmentTracking.Business.Services
 {
-    public class InvestmentCalculator : IInvestmentCalculator
+    public class InvestmentCalculator(ICachingPurchaseLotRepository cachingPurchaseLotRepository) : IInvestmentCalculator
     {
-        private readonly ICachingPurchaseLotRepository _cachingPurchaseLotRepository;
-        private readonly IEnumerable<PurchaseLot> _purchaseLots;
-
-        public InvestmentCalculator(ICachingPurchaseLotRepository cachingPurchaseLotRepository)
-        {
-            _cachingPurchaseLotRepository = cachingPurchaseLotRepository;
-            _purchaseLots = _cachingPurchaseLotRepository.GetPurchaseLots();
-        }
+        private readonly ICachingPurchaseLotRepository _cachingPurchaseLotRepository = cachingPurchaseLotRepository;
 
         public int CalculateRemainingShares(int sharesSold)
         {
-            var totalShares = _purchaseLots.Sum(lot => lot.Shares);
+            var totalShares = _cachingPurchaseLotRepository.GetPurchaseLots().Sum(lot => lot.Shares);
             var remainingShares = totalShares - sharesSold;
             return remainingShares >= 0 ? remainingShares : 0;
         }
@@ -26,7 +19,7 @@ namespace InvestmentTracking.Business.Services
         {
             if (sharesSold <= 0) return 0m;
 
-            List<PurchaseLot> currentPurchaseLots = _purchaseLots.ToList().OrderBy(x => x.PurchaseDate).ToList();;
+            List<PurchaseLot> currentPurchaseLots = _cachingPurchaseLotRepository.GetPurchaseLots().OrderBy(x => x.PurchaseDate).ToList();;
 
             return CalculateCostOfShares(sharesSold, currentPurchaseLots);
         }
@@ -35,7 +28,7 @@ namespace InvestmentTracking.Business.Services
         {
             if (sharesSold <= 0) return 0m;
 
-            List<PurchaseLot> currentPurchaseLots = _purchaseLots.ToList().OrderByDescending(x => x.PurchaseDate).ToList();
+            List<PurchaseLot> currentPurchaseLots = _cachingPurchaseLotRepository.GetPurchaseLots().OrderByDescending(x => x.PurchaseDate).ToList();
 
             return CalculateCostOfShares(sharesSold, currentPurchaseLots);
         }
@@ -59,7 +52,7 @@ namespace InvestmentTracking.Business.Services
 
             int shareSoldCurrent = sharesSold;
             decimal costBasisOfSoldShares = 0;
-            foreach (var lot in _purchaseLots)
+            foreach (var lot in currentPurchaseLots)
             {
                 if (shareSoldCurrent - lot.Shares > 0)
                 {
