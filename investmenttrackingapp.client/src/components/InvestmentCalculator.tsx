@@ -16,12 +16,12 @@ const InvestmentCalculator: React.FC = () => {
         setError(null);
 
         // Validation: Ensure sharesSold and salePrice are greater than 0
-        if (sharesSold <= 0) {
-            setError("The number of shares sold must be greater than 0.");
+        if (sharesSold <= 0 || sharesSold >10000000000000000000000) {
+            setError("The number of shares sold must be greater than 0 and less than 10000000000000000000000.");
             return;
         }
-        if (salePrice <= 0) {
-            setError("The sale price per share must be greater than 0.");
+        if (salePrice <= 0 || sharesSold >10000000000000000000000) {
+            setError("The sale price per share must be greater than 0 and less than 10000000000000000000000.");
             return;
         }
 
