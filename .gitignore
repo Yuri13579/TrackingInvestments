@@ -19,3 +19,13 @@ InvestmentTracking.Business/obj
 BusinessData/bin/Debug
 InvestmentTracking.Tests/bin
 InvestmentTracking.Tests/obj/Debug
+InvestmentTrackingApp.Server/bin/Release
+InvestmentTracking.Tests/obj/Release
+BusinessData/obj/Release
+InvestmentTracking.Business/bin/Release
+InvestmentTracking.Data/obj/Release
+.vs/InvestmentTrackingApp/CopilotIndices/0.2.1634.3922
+.vs/InvestmentTrackingApp/copilot-chat/84bb1b2c/sessions
+BusinessData/bin/Release
+InvestmentTracking.Data/bin/Release
+investmenttrackingapp.client/obj/Release

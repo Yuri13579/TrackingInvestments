@@ -13,7 +13,19 @@ const InvestmentCalculator: React.FC = () => {
     const [error, setError] = useState<string | null>(null);
 
     const handleCalculate = async () => {
+        
         setError(null);
+
+        if (sharesSold <= 0 || sharesSold >10000000000000000000000) {
+            setError("The number of shares sold must be greater than 0 and less than 10000000000000000000000.");
+            return;
+        }
+        if (salePrice <= 0 || sharesSold >10000000000000000000000) {
+            setError("The sale price per share must be greater than 0 and less than 10000000000000000000000.");
+            return;
+        }
+
+
         try {
             const remainingSharesData = await getRemainingShares(sharesSold, accountingStrategyNumber);
             const costBasisSoldData = await getCostBasisOfSoldShares(sharesSold, accountingStrategyNumber);

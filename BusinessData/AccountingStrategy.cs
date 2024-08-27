@@ -8,12 +8,11 @@ public abstract class AccountingStrategy(string name, int value) : SmartEnum<Acc
 {
     public static readonly AccountingStrategy Fifo = new FifoStrategy();
     public static readonly AccountingStrategy Lifo = new LifoStrategy();
-    public static readonly AccountingStrategy AverageCost= new AverageCostStrategy();
-    public static readonly AccountingStrategy LowestTaxExposure= new LowestTaxExposureStrategy();
-    public static readonly AccountingStrategy HighestTaxExposure= new HighestTaxExposureStrategy();
-    public static readonly AccountingStrategy LotBased= new LotBasedStrategy();
+    public static readonly AccountingStrategy AverageCost = new AverageCostStrategy();
+    public static readonly AccountingStrategy LowestTaxExposure = new LowestTaxExposureStrategy();
+    public static readonly AccountingStrategy HighestTaxExposure = new HighestTaxExposureStrategy();
+    public static readonly AccountingStrategy LotBased = new LotBasedStrategy();
 
     public abstract decimal CalculateCostBasisOfSoldShares(IEnumerable<PurchaseLot> purchaseLots, int sharesSold);
     public abstract decimal CalculateCostBasisOfRemainingShares(IEnumerable<PurchaseLot> purchaseLots, int sharesSold);
-
 }

@@ -5,13 +5,9 @@ namespace InvestmentTrackingApp.Server.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class InvestmentController : ControllerBase
+public class InvestmentController(IInvestmentCalculator investmentCalculator) : ControllerBase
 {
-    private readonly IInvestmentCalculator _investmentCalculator;
-    public InvestmentController(IInvestmentCalculator investmentCalculator)
-    {
-        _investmentCalculator = investmentCalculator;
-    }
+    private readonly IInvestmentCalculator _investmentCalculator = investmentCalculator;
 
     [HttpGet("remaining-shares")]
     public IActionResult GetRemainingShares(int sharesSold)
@@ -21,9 +17,9 @@ public class InvestmentController : ControllerBase
             var remainingShares = _investmentCalculator.CalculateRemainingShares(sharesSold);
             return Ok(new { RemainingShares = remainingShares });
         }
-        catch (System.Exception ex)
+        catch (Exception ex)
         {
-            return BadRequest(new { Message = ex.Message });
+            return BadRequest(new { ex.Message });
         }
     }
 
@@ -32,12 +28,12 @@ public class InvestmentController : ControllerBase
     {
         try
         {
-            var costBasis = _investmentCalculator.CalculateCostBasisOfSoldShares(accountingStrategyNumber ,sharesSold);
+            var costBasis = _investmentCalculator.CalculateCostBasisOfSoldShares(accountingStrategyNumber, sharesSold);
             return Ok(new { CostBasisOfSoldShares = costBasis });
         }
-        catch (System.Exception ex)
+        catch (Exception ex)
         {
-            return BadRequest(new { Message = ex.Message });
+            return BadRequest(new { ex.Message });
         }
     }
 
@@ -46,12 +42,13 @@ public class InvestmentController : ControllerBase
     {
         try
         {
-            var costBasis = _investmentCalculator.CalculateCostBasisOfRemainingShares(accountingStrategyNumber,sharesSold);
+            var costBasis =
+                _investmentCalculator.CalculateCostBasisOfRemainingShares(accountingStrategyNumber, sharesSold);
             return Ok(new { CostBasisOfRemainingShares = costBasis });
         }
-        catch (System.Exception ex)
+        catch (Exception ex)
         {
-            return BadRequest(new { Message = ex.Message });
+            return BadRequest(new { ex.Message });
         }
     }
 
@@ -60,12 +57,12 @@ public class InvestmentController : ControllerBase
     {
         try
         {
-            var profit = _investmentCalculator.CalculateProfit(accountingStrategyNumber,sharesSold, salePrice);
+            var profit = _investmentCalculator.CalculateProfit(accountingStrategyNumber, sharesSold, salePrice);
             return Ok(new { Profit = profit });
         }
-        catch (System.Exception ex)
+        catch (Exception ex)
         {
-            return BadRequest(new { Message = ex.Message });
+            return BadRequest(new { ex.Message });
         }
     }
 }

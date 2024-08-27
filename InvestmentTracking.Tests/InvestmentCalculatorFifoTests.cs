@@ -1,99 +1,97 @@
-﻿using InvestmentTracking.Business.Services;
+﻿using FluentAssertions;
+using InvestmentTracking.Business.Services;
 using InvestmentTracking.Business.Services.Interfaces;
 using InvestmentTracking.Data.Model;
 using InvestmentTracking.Data.Repositories.Interfaces;
 using Moq;
-using FluentAssertions;
-using InvestmentTracking.BusinessData.Strategies;
 
-namespace InvestmentTracking.Tests
+namespace InvestmentTracking.Tests;
+
+public class InvestmentCalculatorFifoTests
 {
-    public class InvestmentCalculatorFifoTests
+    private readonly Mock<ICachingPurchaseLotRepository> _mockRepository;
+    private readonly IInvestmentCalculator _investmentCalculator;
+    private const int Fifo = 1;
+
+    public InvestmentCalculatorFifoTests()
     {
-        private readonly Mock<ICachingPurchaseLotRepository> _mockRepository;
-        private readonly IInvestmentCalculator _investmentCalculator;
-        private const int Fifo = 1;
+        _mockRepository = new Mock<ICachingPurchaseLotRepository>();
+        _investmentCalculator = new InvestmentCalculatorFifo(_mockRepository.Object);
+    }
 
-        public InvestmentCalculatorFifoTests()
+    [Fact]
+    public void CalculateRemainingShares_ShouldReturnCorrectValue()
+    {
+        // Arrange
+        var purchaseLots = new List<PurchaseLot>
         {
-            _mockRepository = new Mock<ICachingPurchaseLotRepository>();
-            _investmentCalculator = new InvestmentCalculatorFifo(_mockRepository.Object);
-        }
+            new(100, 20m, new DateTime(2024, 1, 1)),
+            new(150, 30m, new DateTime(2024, 2, 1)),
+            new(120, 10m, new DateTime(2024, 3, 1))
+        };
+        _mockRepository.Setup(repo => repo.GetPurchaseLots()).Returns(purchaseLots);
 
-        [Fact]
-        public void CalculateRemainingShares_ShouldReturnCorrectValue()
+        // Act
+        var result = _investmentCalculator.CalculateRemainingShares(100);
+
+        // Assert
+        result.Should().Be(270);
+    }
+
+    [Fact]
+    public void CalculateCostBasisOfSoldShares_ShouldReturnCorrectValue()
+    {
+        // Arrange
+        var purchaseLots = new List<PurchaseLot>
         {
-            // Arrange
-            var purchaseLots = new List<PurchaseLot>
-            {
-                new PurchaseLot(100, 20m, new DateTime(2024, 1, 1)),
-                new PurchaseLot(150, 30m, new DateTime(2024, 2, 1)),
-                new PurchaseLot(120, 10m, new DateTime(2024, 3, 1))
-            };
-            _mockRepository.Setup(repo => repo.GetPurchaseLots()).Returns(purchaseLots);
+            new(100, 20m, new DateTime(2024, 1, 1)),
+            new(150, 30m, new DateTime(2024, 2, 1)),
+            new(120, 10m, new DateTime(2024, 3, 1))
+        };
+        _mockRepository.Setup(repo => repo.GetPurchaseLots()).Returns(purchaseLots);
 
-            // Act
-            var result = _investmentCalculator.CalculateRemainingShares(100);
+        // Act
+        var result = _investmentCalculator.CalculateCostBasisOfSoldShares(Fifo, 150);
 
-            // Assert
-            result.Should().Be(270);
-        }
+        // Assert
+        result.Should().Be(3500);
+    }
 
-        [Fact]
-        public void CalculateCostBasisOfSoldShares_ShouldReturnCorrectValue()
+    [Fact]
+    public void CalculateCostBasisOfRemainingShares_ShouldReturnCorrectValue()
+    {
+        // Arrange
+        var purchaseLots = new List<PurchaseLot>
         {
-            // Arrange
-            var purchaseLots = new List<PurchaseLot>
-            {
-                new PurchaseLot(100, 20m, new DateTime(2024, 1, 1)),
-                new PurchaseLot(150, 30m, new DateTime(2024, 2, 1)),
-                new PurchaseLot(120, 10m, new DateTime(2024, 3, 1))
-            };
-            _mockRepository.Setup(repo => repo.GetPurchaseLots()).Returns(purchaseLots);
-            
-            // Act
-            var result = _investmentCalculator.CalculateCostBasisOfSoldShares(Fifo,150);
+            new(100, 20m, new DateTime(2024, 1, 1)),
+            new(150, 30m, new DateTime(2024, 2, 1)),
+            new(120, 10m, new DateTime(2024, 3, 1))
+        };
+        _mockRepository.Setup(repo => repo.GetPurchaseLots()).Returns(purchaseLots);
 
-            // Assert
-            result.Should().Be(3500);
-        }
+        // Act
+        var result = _investmentCalculator.CalculateCostBasisOfRemainingShares(Fifo, 150);
 
-        [Fact]
-        public void CalculateCostBasisOfRemainingShares_ShouldReturnCorrectValue()
+        // Assert
+        result.Should().Be(2100);
+    }
+
+    [Fact]
+    public void CalculateProfit_ShouldReturnCorrectValue()
+    {
+        // Arrange
+        var purchaseLots = new List<PurchaseLot>
         {
-            // Arrange
-            var purchaseLots = new List<PurchaseLot>
-            {
-                new PurchaseLot(100, 20m, new DateTime(2024, 1, 1)),
-                new PurchaseLot(150, 30m, new DateTime(2024, 2, 1)),
-                new PurchaseLot(120, 10m, new DateTime(2024, 3, 1))
-            };
-            _mockRepository.Setup(repo => repo.GetPurchaseLots()).Returns(purchaseLots);
+            new(100, 20m, new DateTime(2024, 1, 1)),
+            new(150, 30m, new DateTime(2024, 2, 1)),
+            new(120, 10m, new DateTime(2024, 3, 1))
+        };
+        _mockRepository.Setup(repo => repo.GetPurchaseLots()).Returns(purchaseLots);
 
-            // Act
-            var result = _investmentCalculator.CalculateCostBasisOfRemainingShares(Fifo,150);
+        // Act
+        var result = _investmentCalculator.CalculateProfit(Fifo, 150, 40m);
 
-            // Assert
-            result.Should().Be(2100);
-        }
-
-        [Fact]
-        public void CalculateProfit_ShouldReturnCorrectValue()
-        {
-            // Arrange
-            var purchaseLots = new List<PurchaseLot>
-            {
-                new PurchaseLot(100, 20m, new DateTime(2024, 1, 1)),
-                new PurchaseLot(150, 30m, new DateTime(2024, 2, 1)),
-                new PurchaseLot(120, 10m, new DateTime(2024, 3, 1))
-            };
-            _mockRepository.Setup(repo => repo.GetPurchaseLots()).Returns(purchaseLots);
-
-            // Act
-            var result = _investmentCalculator.CalculateProfit(Fifo,150, 40m);
-
-            // Assert
-            result.Should().Be(2500);
-        }
+        // Assert
+        result.Should().Be(2500);
     }
 }

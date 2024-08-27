@@ -1,16 +1,13 @@
 using InvestmentTrackingApp.Server.Configurations;
 
-string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+const string myAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy(name: MyAllowSpecificOrigins,
-        policy =>
-        {
-            policy.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();
-        });
+    options.AddPolicy(myAllowSpecificOrigins,
+        policy => { policy.WithOrigins("*").AllowAnyMethod().AllowAnyHeader(); });
 });
 
 builder.Services.AddControllers();
@@ -34,7 +31,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseCors(MyAllowSpecificOrigins);
+app.UseCors(myAllowSpecificOrigins);
 
 app.UseAuthorization();
 

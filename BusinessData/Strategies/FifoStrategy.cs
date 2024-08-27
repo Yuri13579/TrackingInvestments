@@ -2,7 +2,7 @@
 
 namespace InvestmentTracking.BusinessData.Strategies
 {
-    public class FifoStrategy() : AccountingStrategy("Fifo", 1) 
+    public class FifoStrategy() : AccountingStrategy("Fifo", 1)
     {
         public override decimal CalculateCostBasisOfSoldShares(IEnumerable<PurchaseLot> purchaseLots, int sharesSold)
         {
@@ -26,9 +26,9 @@ namespace InvestmentTracking.BusinessData.Strategies
 
         private decimal CalculateCostOfShares(int sharesSold, IEnumerable<PurchaseLot> purchaseLots)
         {
-            var totalShares = 0; 
+            var totalShares = 0;
             Queue<PurchaseLot> currentPurchaseLots = new Queue<PurchaseLot>(purchaseLots);
-            
+
             currentPurchaseLots.ToList().ForEach(x => totalShares += x.Shares);
 
             if (sharesSold <= 0 || totalShares < sharesSold)
