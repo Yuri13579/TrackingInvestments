@@ -17,3 +17,5 @@ BusinessData/obj/Debug
 InvestmentTrackingApp.Server/obj
 InvestmentTracking.Business/obj
 BusinessData/bin/Debug
+InvestmentTracking.Tests/bin
+InvestmentTracking.Tests/obj/Debug

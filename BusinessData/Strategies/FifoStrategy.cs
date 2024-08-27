@@ -2,7 +2,7 @@
 
 namespace InvestmentTracking.BusinessData.Strategies
 {
-    public sealed class FifoStrategy() : AccountingStrategy("Fifo", 1)
+    public class FifoStrategy() : AccountingStrategy("Fifo", 1) 
     {
         public override decimal CalculateCostBasisOfSoldShares(IEnumerable<PurchaseLot> purchaseLots, int sharesSold)
         {
