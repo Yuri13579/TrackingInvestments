@@ -4,6 +4,6 @@ namespace InvestmentTracking.Data.Repositories.Interfaces;
 
 public interface ICachingPurchaseLotRepository
 {
-    List<PurchaseLot> GetPurchaseLots();
+    IEnumerable<PurchaseLot> GetPurchaseLots();
     PurchaseLot GetPurchaseLotById(int id);
 }

@@ -14,23 +14,23 @@ namespace InvestmentTracking.Data.Repositories
             _cache = cache;
         }
 
-        public List<PurchaseLot> GetPurchaseLots()
+        public IEnumerable<PurchaseLot> GetPurchaseLots()
         {
             // Retrieve the cached value directly
-            if (_cache.TryGetValue(CacheKey, out List<PurchaseLot> purchaseLots))
+            if (_cache.TryGetValue(CacheKey, out IEnumerable<PurchaseLot> purchaseLots))
             {
                 // Return the collection ordered by PricePerShare
-                return purchaseLots.ToList();
+                return purchaseLots;
             }
 
             // Return an empty list or handle the case when data is not in the cache
-            return new List<PurchaseLot>();
+            return [];
         }
 
         public PurchaseLot GetPurchaseLotById(int id)
         {
             var purchaseLots = GetPurchaseLots();
-            var purchaseLot = purchaseLots.Find(lot => lot.GetHashCode() == id); // Replace with actual identifier
+            var purchaseLot = purchaseLots.ToList().Find(lot => lot.GetHashCode() == id); // Replace with actual identifier
             return purchaseLot;
         }
     }

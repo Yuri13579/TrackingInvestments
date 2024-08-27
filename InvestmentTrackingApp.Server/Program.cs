@@ -1,13 +1,13 @@
 using InvestmentTrackingApp.Server.Configurations;
 
-string  MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: MyAllowSpecificOrigins,
-        policy  =>
+        policy =>
         {
             policy.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();
         });

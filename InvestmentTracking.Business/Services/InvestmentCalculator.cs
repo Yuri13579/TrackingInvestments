@@ -1,6 +1,6 @@
 ﻿using InvestmentTracking.Business.Services.Interfaces;
+using InvestmentTracking.BusinessData.Strategies;
 using InvestmentTracking.Data.Repositories.Interfaces;
-using static InvestmentTracking.BusinessData.AccountingStrategy;
 
 
 namespace InvestmentTracking.Business.Services
@@ -19,21 +19,21 @@ namespace InvestmentTracking.Business.Services
         public decimal CalculateCostBasisOfSoldShares(int sharesSold)
         {
             var strategy = new FifoStrategy();
-            return strategy.CalculateCostBasisOfSoldShares(_cachingPurchaseLotRepository.GetPurchaseLots().ToList(), sharesSold);
-            
+            return strategy.CalculateCostBasisOfSoldShares(_cachingPurchaseLotRepository.GetPurchaseLots(), sharesSold);
+
         }
 
         public decimal CalculateCostBasisOfRemainingShares(int sharesSold)
         {
             var strategy = new FifoStrategy();
-            return strategy.CalculateCostBasisOfRemainingShares(_cachingPurchaseLotRepository.GetPurchaseLots().ToList(), sharesSold);
+            return strategy.CalculateCostBasisOfRemainingShares(_cachingPurchaseLotRepository.GetPurchaseLots(), sharesSold);
         }
 
         public decimal CalculateProfit(int sharesSold, decimal salePrice)
         {
             if (sharesSold <= 0 || salePrice <= 0) return 0m;
             var strategy = new FifoStrategy();
-            decimal costBasis = strategy.CalculateCostBasisOfSoldShares (_cachingPurchaseLotRepository.GetPurchaseLots().ToList(), sharesSold);
+            decimal costBasis = strategy.CalculateCostBasisOfSoldShares(_cachingPurchaseLotRepository.GetPurchaseLots(), sharesSold);
 
             //decimal costBasis = CalculateCostBasisOfSoldShares(sharesSold);
             decimal profit = (salePrice * sharesSold) - costBasis;
