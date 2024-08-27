@@ -13,7 +13,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InvestmentTracking.Business
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InvestmentTracking.BusinessData", "BusinessData\InvestmentTracking.BusinessData.csproj", "{1968835E-FD84-41D2-B229-3AAE66E83949}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvestmentTracking.Tests", "InvestmentTracking.Tests\InvestmentTracking.Tests.csproj", "{D2C1D176-AD73-4AE6-BCF6-1706C804F84E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InvestmentTracking.Tests", "InvestmentTracking.Tests\InvestmentTracking.Tests.csproj", "{D2C1D176-AD73-4AE6-BCF6-1706C804F84E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AE276161-1113-472C-A9D8-C8396E2F1D03}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
