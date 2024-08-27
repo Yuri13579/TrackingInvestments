@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BusinessData\InvestmentTracking.BusinessData.csproj" />
+    <ProjectReference Include="..\InvestmentTracking.BusinessData\InvestmentTracking.BusinessData.csproj" />
     <ProjectReference Include="..\InvestmentTracking.Data\InvestmentTracking.Data.csproj" />
   </ItemGroup>
 

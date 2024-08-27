@@ -4,14 +4,14 @@
     "C:\\projects\\TrackingInvestments\\InvestmentTracking.Tests\\InvestmentTracking.Tests.csproj": {}
   },
   "projects": {
-    "C:\\projects\\TrackingInvestments\\BusinessData\\InvestmentTracking.BusinessData.csproj": {
+    "C:\\projects\\TrackingInvestments\\InvestmentTracking.BusinessData\\InvestmentTracking.BusinessData.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\projects\\TrackingInvestments\\BusinessData\\InvestmentTracking.BusinessData.csproj",
+        "projectUniqueName": "C:\\projects\\TrackingInvestments\\InvestmentTracking.BusinessData\\InvestmentTracking.BusinessData.csproj",
         "projectName": "InvestmentTracking.BusinessData",
-        "projectPath": "C:\\projects\\TrackingInvestments\\BusinessData\\InvestmentTracking.BusinessData.csproj",
+        "projectPath": "C:\\projects\\TrackingInvestments\\InvestmentTracking.BusinessData\\InvestmentTracking.BusinessData.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\projects\\TrackingInvestments\\BusinessData\\obj\\",
+        "outputPath": "C:\\projects\\TrackingInvestments\\InvestmentTracking.BusinessData\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -106,8 +106,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\projects\\TrackingInvestments\\BusinessData\\InvestmentTracking.BusinessData.csproj": {
-                "projectPath": "C:\\projects\\TrackingInvestments\\BusinessData\\InvestmentTracking.BusinessData.csproj"
+              "C:\\projects\\TrackingInvestments\\InvestmentTracking.BusinessData\\InvestmentTracking.BusinessData.csproj": {
+                "projectPath": "C:\\projects\\TrackingInvestments\\InvestmentTracking.BusinessData\\InvestmentTracking.BusinessData.csproj"
               },
               "C:\\projects\\TrackingInvestments\\InvestmentTracking.Data\\InvestmentTracking.Data.csproj": {
                 "projectPath": "C:\\projects\\TrackingInvestments\\InvestmentTracking.Data\\InvestmentTracking.Data.csproj"

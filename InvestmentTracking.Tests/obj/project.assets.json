@@ -5990,8 +5990,8 @@
     },
     "InvestmentTracking.BusinessData/1.0.0": {
       "type": "project",
-      "path": "../BusinessData/InvestmentTracking.BusinessData.csproj",
-      "msbuildProject": "../BusinessData/InvestmentTracking.BusinessData.csproj"
+      "path": "../InvestmentTracking.BusinessData/InvestmentTracking.BusinessData.csproj",
+      "msbuildProject": "../InvestmentTracking.BusinessData/InvestmentTracking.BusinessData.csproj"
     },
     "InvestmentTracking.Data/1.0.0": {
       "type": "project",

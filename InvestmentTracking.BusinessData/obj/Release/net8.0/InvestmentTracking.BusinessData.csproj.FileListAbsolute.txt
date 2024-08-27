@@ -1,0 +1,16 @@
+C:\projects\TrackingInvestments\BusinessData\bin\Release\net8.0\InvestmentTracking.BusinessData.deps.json
+C:\projects\TrackingInvestments\BusinessData\bin\Release\net8.0\InvestmentTracking.BusinessData.dll
+C:\projects\TrackingInvestments\BusinessData\bin\Release\net8.0\InvestmentTracking.BusinessData.pdb
+C:\projects\TrackingInvestments\BusinessData\bin\Release\net8.0\InvestmentTracking.Data.dll
+C:\projects\TrackingInvestments\BusinessData\bin\Release\net8.0\InvestmentTracking.Data.pdb
+C:\projects\TrackingInvestments\BusinessData\obj\Release\net8.0\InvestmentTracking.BusinessData.csproj.AssemblyReference.cache
+C:\projects\TrackingInvestments\BusinessData\obj\Release\net8.0\InvestmentTracking.BusinessData.GeneratedMSBuildEditorConfig.editorconfig
+C:\projects\TrackingInvestments\BusinessData\obj\Release\net8.0\InvestmentTracking.BusinessData.AssemblyInfoInputs.cache
+C:\projects\TrackingInvestments\BusinessData\obj\Release\net8.0\InvestmentTracking.BusinessData.AssemblyInfo.cs
+C:\projects\TrackingInvestments\BusinessData\obj\Release\net8.0\InvestmentTracking.BusinessData.csproj.CoreCompileInputs.cache
+C:\projects\TrackingInvestments\BusinessData\obj\Release\net8.0\InvestmentTracking.BusinessData.sourcelink.json
+C:\projects\TrackingInvestments\BusinessData\obj\Release\net8.0\Investme.363BC870.Up2Date
+C:\projects\TrackingInvestments\BusinessData\obj\Release\net8.0\InvestmentTracking.BusinessData.dll
+C:\projects\TrackingInvestments\BusinessData\obj\Release\net8.0\refint\InvestmentTracking.BusinessData.dll
+C:\projects\TrackingInvestments\BusinessData\obj\Release\net8.0\InvestmentTracking.BusinessData.pdb
+C:\projects\TrackingInvestments\BusinessData\obj\Release\net8.0\ref\InvestmentTracking.BusinessData.dll
