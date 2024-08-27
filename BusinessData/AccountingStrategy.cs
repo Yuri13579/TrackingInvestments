@@ -1,7 +1,7 @@
 ﻿using Ardalis.SmartEnum;
 using InvestmentTracking.Data.Model;
 
-namespace BusinessData;
+namespace InvestmentTracking.BusinessData;
 
 public abstract class AccountingStrategy : SmartEnum<AccountingStrategy>
 {
@@ -48,7 +48,7 @@ public abstract class AccountingStrategy : SmartEnum<AccountingStrategy>
         private decimal CalculateCostOfShares(int sharesSold, List<PurchaseLot> currentPurchaseLots)
         {
             var totalShares = 0;
-
+            //Queue
             currentPurchaseLots.ForEach(x => totalShares += x.Shares);
 
             if (sharesSold <= 0 || totalShares < sharesSold)

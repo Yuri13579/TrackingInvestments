@@ -272,9 +272,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\projects\\TrackingInvestments\\BusinessData\\BusinessData.csproj",
-      "projectName": "BusinessData",
-      "projectPath": "C:\\projects\\TrackingInvestments\\BusinessData\\BusinessData.csproj",
+      "projectUniqueName": "C:\\projects\\TrackingInvestments\\BusinessData\\InvestmentTracking.BusinessData.csproj",
+      "projectName": "InvestmentTracking.BusinessData",
+      "projectPath": "C:\\projects\\TrackingInvestments\\BusinessData\\InvestmentTracking.BusinessData.csproj",
       "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
       "outputPath": "C:\\projects\\TrackingInvestments\\BusinessData\\obj\\",
       "projectStyle": "PackageReference",

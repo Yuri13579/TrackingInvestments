@@ -7,11 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InvestmentTrackingApp.Serve
 EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "investmenttrackingapp.client", "investmenttrackingapp.client\investmenttrackingapp.client.esproj", "{42BA7808-1ACD-429D-B4C0-2D7A9EB8CC37}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvestmentTracking.Data", "InvestmentTracking.Data\InvestmentTracking.Data.csproj", "{299DAC7D-2500-4E0F-ABDA-BC8C35661A05}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InvestmentTracking.Data", "InvestmentTracking.Data\InvestmentTracking.Data.csproj", "{299DAC7D-2500-4E0F-ABDA-BC8C35661A05}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvestmentTracking.Business", "InvestmentTracking.Business\InvestmentTracking.Business.csproj", "{E85E6072-9D05-4284-8DF3-4E71B7DE74F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InvestmentTracking.Business", "InvestmentTracking.Business\InvestmentTracking.Business.csproj", "{E85E6072-9D05-4284-8DF3-4E71B7DE74F5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessData", "BusinessData\BusinessData.csproj", "{1968835E-FD84-41D2-B229-3AAE66E83949}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InvestmentTracking.BusinessData", "BusinessData\InvestmentTracking.BusinessData.csproj", "{1968835E-FD84-41D2-B229-3AAE66E83949}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

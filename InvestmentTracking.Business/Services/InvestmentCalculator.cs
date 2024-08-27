@@ -1,8 +1,7 @@
-﻿using BusinessData;
-using InvestmentTracking.Business.Services.Interfaces;
-using InvestmentTracking.Data.Model;
+﻿using InvestmentTracking.Business.Services.Interfaces;
 using InvestmentTracking.Data.Repositories.Interfaces;
-using static BusinessData.AccountingStrategy;
+using static InvestmentTracking.BusinessData.AccountingStrategy;
+
 
 namespace InvestmentTracking.Business.Services
 {
