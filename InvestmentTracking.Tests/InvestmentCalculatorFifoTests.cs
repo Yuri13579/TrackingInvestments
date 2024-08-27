@@ -8,15 +8,16 @@ using InvestmentTracking.BusinessData.Strategies;
 
 namespace InvestmentTracking.Tests
 {
-    public class InvestmentCalculatorTests
+    public class InvestmentCalculatorFifoTests
     {
         private readonly Mock<ICachingPurchaseLotRepository> _mockRepository;
         private readonly IInvestmentCalculator _investmentCalculator;
+        private const int Fifo = 1;
 
-        public InvestmentCalculatorTests()
+        public InvestmentCalculatorFifoTests()
         {
             _mockRepository = new Mock<ICachingPurchaseLotRepository>();
-            _investmentCalculator = new InvestmentCalculator(_mockRepository.Object);
+            _investmentCalculator = new InvestmentCalculatorFifo(_mockRepository.Object);
         }
 
         [Fact]
@@ -49,13 +50,9 @@ namespace InvestmentTracking.Tests
                 new PurchaseLot(120, 10m, new DateTime(2024, 3, 1))
             };
             _mockRepository.Setup(repo => repo.GetPurchaseLots()).Returns(purchaseLots);
-
-            // Mocking FifoStrategy (if it is also a class with logic)
-            var mockFifoStrategy = new Mock<FifoStrategy>();
-            mockFifoStrategy.Setup(s => s.CalculateCostBasisOfSoldShares(purchaseLots, 100)).Returns(3500);
-
+            
             // Act
-            var result = _investmentCalculator.CalculateCostBasisOfSoldShares(150);
+            var result = _investmentCalculator.CalculateCostBasisOfSoldShares(Fifo,150);
 
             // Assert
             result.Should().Be(3500);
@@ -73,12 +70,8 @@ namespace InvestmentTracking.Tests
             };
             _mockRepository.Setup(repo => repo.GetPurchaseLots()).Returns(purchaseLots);
 
-            // Mocking FifoStrategy (if it is also a class with logic)
-            var mockFifoStrategy = new Mock<FifoStrategy>();
-            mockFifoStrategy.Setup(s => s.CalculateCostBasisOfRemainingShares(purchaseLots, 150)).Returns(2100);
-
             // Act
-            var result = _investmentCalculator.CalculateCostBasisOfRemainingShares(150);
+            var result = _investmentCalculator.CalculateCostBasisOfRemainingShares(Fifo,150);
 
             // Assert
             result.Should().Be(2100);
@@ -96,12 +89,8 @@ namespace InvestmentTracking.Tests
             };
             _mockRepository.Setup(repo => repo.GetPurchaseLots()).Returns(purchaseLots);
 
-            // Mocking FifoStrategy (if it is also a class with logic)
-            var mockFifoStrategy = new Mock<FifoStrategy>();
-            mockFifoStrategy.Setup(s => s.CalculateCostBasisOfSoldShares(purchaseLots, 150)).Returns(23.33m);
-
             // Act
-            var result = _investmentCalculator.CalculateProfit(150, 40m);
+            var result = _investmentCalculator.CalculateProfit(Fifo,150, 40m);
 
             // Assert
             result.Should().Be(2500);

@@ -5,6 +5,7 @@ import './InvestmentCalculator.css';
 const InvestmentCalculator: React.FC = () => {
     const [sharesSold, setSharesSold] = useState<number>(0);
     const [salePrice, setSalePrice] = useState<number>(0);
+    const accountingStrategyNumber = 1; // Fifo
     const [remainingShares, setRemainingShares] = useState<number | null>(null);
     const [costBasisSold, setCostBasisSold] = useState<number | null>(null);
     const [costBasisRemaining, setCostBasisRemaining] = useState<number | null>(null);
@@ -12,32 +13,20 @@ const InvestmentCalculator: React.FC = () => {
     const [error, setError] = useState<string | null>(null);
 
     const handleCalculate = async () => {
-        // Reset any previous error messages
         setError(null);
-
-        // Validation: Ensure sharesSold and salePrice are greater than 0
-        if (sharesSold <= 0 || sharesSold >10000000000000000000000) {
-            setError("The number of shares sold must be greater than 0 and less than 10000000000000000000000.");
-            return;
-        }
-        if (salePrice <= 0 || sharesSold >10000000000000000000000) {
-            setError("The sale price per share must be greater than 0 and less than 10000000000000000000000.");
-            return;
-        }
-
         try {
-            const remainingSharesData = await getRemainingShares(sharesSold);
-            const costBasisSoldData = await getCostBasisOfSoldShares(sharesSold);
-            const costBasisRemainingData = await getCostBasisOfRemainingShares(sharesSold);
-            const profitData = await getProfit(sharesSold, salePrice);
+            const remainingSharesData = await getRemainingShares(sharesSold, accountingStrategyNumber);
+            const costBasisSoldData = await getCostBasisOfSoldShares(sharesSold, accountingStrategyNumber);
+            const costBasisRemainingData = await getCostBasisOfRemainingShares(sharesSold, accountingStrategyNumber);
+            const profitData = await getProfit(sharesSold, salePrice, accountingStrategyNumber);
 
             setRemainingShares(remainingSharesData.remainingShares);
             setCostBasisSold(costBasisSoldData.costBasisOfSoldShares);
             setCostBasisRemaining(costBasisRemainingData.costBasisOfRemainingShares);
             setProfit(profitData.profit);
         } catch (error) {
-            console.error('Error calculating results:', error);
             setError("An error occurred while calculating the results. Please try again.");
+            console.error('Error calculating results:', error);
         }
     };
 
@@ -61,6 +50,16 @@ const InvestmentCalculator: React.FC = () => {
                     value={salePrice}
                     onChange={(e) => setSalePrice(Number(e.target.value))}
                 />
+            </div>
+            <div>
+                <label htmlFor="accountingStrategy">Accounting Strategy:</label>
+                <select
+                    id="accountingStrategy"
+                    value={accountingStrategyNumber}
+                    disabled
+                >
+                    <option value="1">Fifo</option>
+                </select>
             </div>
             <button onClick={handleCalculate}>Calculate</button>
 

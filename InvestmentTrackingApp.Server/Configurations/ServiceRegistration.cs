@@ -10,7 +10,7 @@ namespace InvestmentTrackingApp.Server.Configurations
         public static void AddProjectServices(this IServiceCollection services)
         {
             services.AddSingleton<ICachingPurchaseLotRepository, CachingPurchaseLotRepository>();
-            services.AddTransient<IInvestmentCalculator, InvestmentCalculator>();
+            services.AddTransient<IInvestmentCalculator, InvestmentCalculatorFifo>();
 
             services.AddMemoryCache();
         }

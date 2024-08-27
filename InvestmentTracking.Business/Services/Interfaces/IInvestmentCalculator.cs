@@ -3,8 +3,8 @@
     public interface IInvestmentCalculator
     {
         int CalculateRemainingShares(int sharesSold);
-        decimal CalculateCostBasisOfSoldShares(int sharesSold);
-        decimal CalculateCostBasisOfRemainingShares(int sharesSold);
-        decimal CalculateProfit(int sharesSold, decimal salePrice);
+        decimal CalculateCostBasisOfSoldShares(int accountingStrategyNumber, int sharesSold);
+        decimal CalculateCostBasisOfRemainingShares(int accountingStrategyNumber, int sharesSold);
+        decimal CalculateProfit(int accountingStrategyNumber, int sharesSold, decimal salePrice);
     }
 }

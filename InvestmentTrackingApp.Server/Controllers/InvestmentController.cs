@@ -8,7 +8,6 @@ namespace InvestmentTrackingApp.Server.Controllers;
 public class InvestmentController : ControllerBase
 {
     private readonly IInvestmentCalculator _investmentCalculator;
-
     public InvestmentController(IInvestmentCalculator investmentCalculator)
     {
         _investmentCalculator = investmentCalculator;
@@ -29,11 +28,11 @@ public class InvestmentController : ControllerBase
     }
 
     [HttpGet("cost-basis-sold")]
-    public IActionResult GetCostBasisOfSoldShares(int sharesSold)
+    public IActionResult GetCostBasisOfSoldShares(int sharesSold, int accountingStrategyNumber)
     {
         try
         {
-            var costBasis = _investmentCalculator.CalculateCostBasisOfSoldShares(sharesSold);
+            var costBasis = _investmentCalculator.CalculateCostBasisOfSoldShares(accountingStrategyNumber ,sharesSold);
             return Ok(new { CostBasisOfSoldShares = costBasis });
         }
         catch (System.Exception ex)
@@ -43,11 +42,11 @@ public class InvestmentController : ControllerBase
     }
 
     [HttpGet("cost-basis-remaining")]
-    public IActionResult GetCostBasisOfRemainingShares(int sharesSold)
+    public IActionResult GetCostBasisOfRemainingShares(int sharesSold, int accountingStrategyNumber)
     {
         try
         {
-            var costBasis = _investmentCalculator.CalculateCostBasisOfRemainingShares(sharesSold);
+            var costBasis = _investmentCalculator.CalculateCostBasisOfRemainingShares(accountingStrategyNumber,sharesSold);
             return Ok(new { CostBasisOfRemainingShares = costBasis });
         }
         catch (System.Exception ex)
@@ -57,11 +56,11 @@ public class InvestmentController : ControllerBase
     }
 
     [HttpGet("profit")]
-    public IActionResult GetProfit(int sharesSold, decimal salePrice)
+    public IActionResult GetProfit(int sharesSold, decimal salePrice, int accountingStrategyNumber)
     {
         try
         {
-            var profit = _investmentCalculator.CalculateProfit(sharesSold, salePrice);
+            var profit = _investmentCalculator.CalculateProfit(accountingStrategyNumber,sharesSold, salePrice);
             return Ok(new { Profit = profit });
         }
         catch (System.Exception ex)
